@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jay.user.domain.repository.mapper.UserMapper">
+
+    <select id="getUserRole" resultType="cn.jay.user.domain.repository.po.UserPo">
+        select user.*, role.role
+        from user_role user_role, tb_user user, tb_role role
+        where user_role.user_id = user.id
+        and user_role.role_id = role.id
+        and user.username=#{username}
+    </select>
+</mapper>
