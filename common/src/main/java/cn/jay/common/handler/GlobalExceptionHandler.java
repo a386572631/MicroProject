@@ -15,7 +15,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public Result<Object> handlerException(Exception e){
         log.error("[handleException]: " + e.getMessage());
-        return ResultUtils.error(999999, "Throw Default Exception~~~");
+        return ResultUtils.error("0", "Throw Default Exception~~~");
     }
 
 }

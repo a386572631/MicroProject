@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.oauth2.common.exceptions.InvalidGrantException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,11 +24,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     UserMapper userMapper;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws InvalidGrantException {
         List<UserPo> user = userMapper.getUserRole(username);
         log.info("user: " + user);
         if (user.size() < 1) {
-            return null;
+            throw new InvalidGrantException("用户名或密码错误");
         }
         List<String> roles = user.stream().map(UserPo::getRole).collect(Collectors.toList());
         List<GrantedAuthority> list = new ArrayList<>();

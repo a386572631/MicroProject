@@ -3,7 +3,7 @@ package cn.jay.common.dto;
 import java.util.Objects;
 
 public class Result<T> {
-    private Integer code;
+    private String code;
 
     private String message;
 
@@ -16,18 +16,18 @@ public class Result<T> {
     public Result() {
     }
 
-    public Result(Integer code, String message) {
+    public Result(String code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public Result(Integer code, String message, T data) {
+    public Result(String code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -39,7 +39,7 @@ public class Result<T> {
         this.data = data;
     }
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
