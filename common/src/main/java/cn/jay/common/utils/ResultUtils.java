@@ -1,6 +1,6 @@
-package common.utils;
+package cn.jay.common.utils;
 
-import common.dto.Result;
+import cn.jay.common.dto.Result;
 
 public class ResultUtils<T> {
 
@@ -11,6 +11,11 @@ public class ResultUtils<T> {
 
     public static Result error(String errorMsg) {
         Result result = new Result(0, errorMsg);
+        return result;
+    }
+
+    public static Result error(Integer code, String errorMsg) {
+        Result result = new Result(code, errorMsg);
         return result;
     }
 }

@@ -1,4 +1,4 @@
-package common.dto;
+package cn.jay.common.dto;
 
 import java.util.Objects;
 
