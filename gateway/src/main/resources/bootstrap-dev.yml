@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: test
+          uri: http://www.baidu.com
+          predicates:
+            - Path=/test
+          filters:
+            - StripPrefix=1
