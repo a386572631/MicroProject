@@ -18,9 +18,7 @@ target/
 *.iml
 out
 gen
-.idea/.gitignore
-.idea/.name
-.idea/misc.xml
+.idea/
 target
 *.iws
 *.ipr
