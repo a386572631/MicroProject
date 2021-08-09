@@ -4,6 +4,13 @@ server:
 spring:
   cloud:
     gateway:
+      # 跨域配置
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedHeaders: "*"
+            allowedOrigins: "*"
+            allowedMethods: "*"
       discovery:
         locator:
           enabled: true

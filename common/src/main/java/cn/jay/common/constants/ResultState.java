@@ -15,7 +15,10 @@ public enum ResultState {
     LOGINSUCCESS("10000", "登录成功"),
     LOGINFAIL("10001", "用户名或密码错误"),
     LOGINFAIL_NOUSER("10002", "用户已失效"),
-    // 预留
+    UNAUTHENTICATION("10003", "未登录授权"),
+    TOKENINVALID("10004", "TOKEN无效"),
+    TOKENSUCCESS("10005", "TOKEN校验成功"),
+    TOKENFAIL("10006", "TOKEN异常"),
     LOGINFAILUNKNOW("10009", "登录失败");
 
     private String code;

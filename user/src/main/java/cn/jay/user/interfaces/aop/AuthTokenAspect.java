@@ -11,8 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.exceptions.InvalidGrantException;
+import org.springframework.security.oauth2.common.exceptions.InvalidTokenException;
 import org.springframework.security.oauth2.common.exceptions.UnauthorizedUserException;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 @Component
 @Aspect
@@ -41,6 +44,20 @@ public class AuthTokenAspect {
         }
         return this.returnResponse(response);
     }
+
+//    @Around("execution(* org.springframework.security.oauth2.provider.endpoint.CheckTokenEndpoint.checkToken(..))")
+//    public Object handleCheckToken(ProceedingJoinPoint pjp) throws Throwable {
+//        Object proceed = null;
+//        try {
+//            proceed = pjp.proceed();
+//        } catch (InvalidTokenException e) {
+//            log.error(e.getMessage());
+//            return returnResponse(ResultUtils.state(ResultState.TOKENINVALID));
+//        }
+//        Result response = proceed != null ? ResultUtils.state(ResultState.TOKENSUCCESS, proceed)
+//                : ResultUtils.state(ResultState.TOKENFAIL);
+//        return returnResponse(response);
+//    }
 
     private <T> ResponseEntity returnResponse(T response) {
         return ResponseEntity
