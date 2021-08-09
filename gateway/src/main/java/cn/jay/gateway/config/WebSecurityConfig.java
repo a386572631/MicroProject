@@ -12,7 +12,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableWebFluxSecurity
 @Order(2)
 public class WebSecurityConfig {
-    private String permitUrls = "/auth-service/oauth/token,/auth-service/oauth/check_token";
+    private String permitUrls = "/auth-service/oauth/token,/auth-service/oauth/check_token,/user-service/user/login";
     @Autowired
     TokenServerSecurityContextRepo tokenServerSecurityContextRepo;
 
@@ -24,7 +24,8 @@ public class WebSecurityConfig {
         http.csrf().disable()
                 .securityContextRepository(tokenServerSecurityContextRepo)
                 .authorizeExchange()
-//                 白名单
+//                .pathMatchers("/user-service/**").permitAll()
+                 // 白名单
                 .pathMatchers(this.permitUrls.split(",")).permitAll()
                 .anyExchange().authenticated().and()
 //                .httpBasic().authenticationEntryPoint(myHttpBasicServerAuthenticationEntryPoint).and()
