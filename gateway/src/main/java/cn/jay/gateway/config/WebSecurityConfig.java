@@ -12,7 +12,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableWebFluxSecurity
 @Order(2)
 public class WebSecurityConfig {
-    private String permitUrls = "/auth-service/oauth/token,/auth-service/oauth/check_token,/user-service/user/login";
+    private String permitUrls = "/user-service/user/login";
     @Autowired
     TokenServerSecurityContextRepo tokenServerSecurityContextRepo;
 
