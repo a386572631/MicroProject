@@ -103,7 +103,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security
                 // /oauth/token_key地址公开，不需登录即可取密钥
-                .tokenKeyAccess("permitAll()")
+//                .tokenKeyAccess("permitAll()")
                 // /oauth/check_token地址公开
                 .checkTokenAccess("permitAll()")
                 // 允许表单验证
