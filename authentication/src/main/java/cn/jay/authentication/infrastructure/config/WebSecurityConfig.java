@@ -1,4 +1,4 @@
-package cn.jay.user.infrastructure.config;
+package cn.jay.authentication.infrastructure.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,8 +37,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/user/login").permitAll()
-                .antMatchers("/user/hello").permitAll()
                 .antMatchers("/*").authenticated()
 //                .anyRequest().authenticated()
                 .and()

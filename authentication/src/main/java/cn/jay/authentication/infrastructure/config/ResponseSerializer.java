@@ -1,4 +1,4 @@
-//package cn.jay.user.infrastructure.config;
+//package cn.jay.authentication.infrastructure.config;
 //
 //import cn.jay.common.dto.Result;
 //import com.fasterxml.jackson.core.JsonGenerator;

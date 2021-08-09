@@ -1,4 +1,4 @@
-package cn.jay.user.infrastructure.config;
+package cn.jay.authentication.infrastructure.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

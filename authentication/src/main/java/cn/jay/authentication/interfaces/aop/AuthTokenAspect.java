@@ -1,4 +1,4 @@
-package cn.jay.user.interfaces.aop;
+package cn.jay.authentication.interfaces.aop;
 
 import cn.jay.common.constants.ResultState;
 import cn.jay.common.dto.Result;

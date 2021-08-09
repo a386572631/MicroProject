@@ -1,4 +1,4 @@
-package cn.jay.user.infrastructure.config;
+package cn.jay.authentication.infrastructure.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -49,7 +49,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
                 // 采用内存存储
                 .inMemory()
                 // 客户端id
-                .withClient("user-service")
+                .withClient("user-client")
                 // 客户端密钥
                 .secret("user559")
                 // 资源列表

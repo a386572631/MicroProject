@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: auth-service
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        namespace: "25b744db-d355-4df8-938a-6ca9ad82f806"
+      config:
+        namespace: "25b744db-d355-4df8-938a-6ca9ad82f806"
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/micro?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
