@@ -6,6 +6,9 @@
     <modules>
         <module>common</module>
         <module>micro</module>
+        <module>authentication</module>
+        <module>gateway</module>
+        <module>user</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
