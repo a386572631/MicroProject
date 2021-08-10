@@ -14,11 +14,13 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.InMemoryAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.*;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
+import javax.sql.DataSource;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,28 +42,39 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private JwtAccessTokenConverter accessTokenConverter;
+
+    @Autowired
+    DataSource dataSource;
     /**
      * 配置客户端详情服务，从数据库获取用户详细信息（用户名和密码）进行校验
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients
-                // 采用内存存储
-                .inMemory()
-                // 客户端id
-                .withClient("user-client")
-                // 客户端密钥
-                .secret("user559")
-                // 资源列表
-                .resourceIds("res1")
-                // 授权模式：授权码模式，简化模式，密码模式，客户端模式
-                .authorizedGrantTypes("authorization_code", "implicit", "password", "client_credentials", "refresh_token")
-                // 允许的授权范围
-                .scopes("all")
-                // false 跳转到授权页面
-                .autoApprove(false)
-                // 回调地址
-                .redirectUris("http://www.baidu.com");
+//        clients
+//                // 采用内存存储
+//                .inMemory()
+//                // 客户端id
+//                .withClient("user-client")
+//                // 客户端密钥
+//                .secret("user559")
+//                // 资源列表
+//                .resourceIds("res1")
+//                // 授权模式：授权码模式，简化模式，密码模式，客户端模式
+//                .authorizedGrantTypes("authorization_code", "implicit", "password", "client_credentials", "refresh_token")
+//                // 允许的授权范围
+//                .scopes("all")
+//                // false 跳转到授权页面
+//                .autoApprove(false)
+//                // 回调地址
+//                .redirectUris("http://www.baidu.com");
+
+        // 数据库存储 Jdbc
+        clients.withClientDetails(clientDetail());
+    }
+
+    @Bean
+    public ClientDetailsService clientDetail() {
+        return new JdbcClientDetailsService(dataSource);
     }
 
     /**
