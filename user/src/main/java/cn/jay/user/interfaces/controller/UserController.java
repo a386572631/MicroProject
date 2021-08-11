@@ -16,7 +16,7 @@ public class UserController {
 
     @GetMapping(value = "/hello")
     public Result<String> hello() {
-        return ResultUtils.success("Hello World");
+        return ResultUtils.success("Hello user-service");
     }
 
     @PostMapping(value = "/login")
