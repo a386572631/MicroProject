@@ -2,6 +2,7 @@ package cn.jay.authentication.interfaces.aop;
 
 import cn.jay.common.constants.ResultState;
 import cn.jay.common.dto.Result;
+import cn.jay.common.utils.MyUtils;
 import cn.jay.common.utils.ResultUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -45,19 +46,20 @@ public class AuthTokenAspect {
         return this.returnResponse(response);
     }
 
-//    @Around("execution(* org.springframework.security.oauth2.provider.endpoint.CheckTokenEndpoint.checkToken(..))")
-//    public Object handleCheckToken(ProceedingJoinPoint pjp) throws Throwable {
-//        Object proceed = null;
-//        try {
-//            proceed = pjp.proceed();
-//        } catch (InvalidTokenException e) {
-//            log.error(e.getMessage());
-//            return returnResponse(ResultUtils.state(ResultState.TOKENINVALID));
-//        }
-//        Result response = proceed != null ? ResultUtils.state(ResultState.TOKENSUCCESS, proceed)
-//                : ResultUtils.state(ResultState.TOKENFAIL);
-//        return returnResponse(response);
-//    }
+    @Around("execution(* org.springframework.security.oauth2.provider.endpoint.CheckTokenEndpoint.checkToken(..))")
+    public Object handleCheckToken(ProceedingJoinPoint pjp) throws Throwable {
+        Object proceed = null;
+        try {
+            proceed = pjp.proceed();
+        } catch (InvalidTokenException e) {
+            log.info("e.getOAuth2ErrorCode(): " + e.getOAuth2ErrorCode());
+            log.error("e.getMessage(): " + e.getMessage());
+            return MyUtils.objectToMap(ResultUtils.state(ResultState.TOKENINVALID));
+        }
+        Result response = proceed != null ? ResultUtils.state(ResultState.TOKENSUCCESS, proceed)
+                : ResultUtils.state(ResultState.TOKENFAIL);
+        return MyUtils.objectToMap(response);
+    }
 
     private <T> ResponseEntity returnResponse(T response) {
         return ResponseEntity
