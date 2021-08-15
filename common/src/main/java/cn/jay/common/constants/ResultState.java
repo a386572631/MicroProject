@@ -3,7 +3,6 @@ package cn.jay.common.constants;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.Stream;
 
@@ -25,7 +24,7 @@ public enum ResultState {
     private String code;
     private String message;
 
-    public ResultState of(String code) {
+    public static ResultState of(String code) {
         Objects.requireNonNull(code);
         return Stream.of(values()).filter(item -> Objects.equals(item.getCode(), code))
                 .findAny()

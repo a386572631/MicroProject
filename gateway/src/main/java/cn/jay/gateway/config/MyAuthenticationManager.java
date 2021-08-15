@@ -1,6 +1,8 @@
 package cn.jay.gateway.config;
 
+import cn.jay.common.dto.Result;
 import cn.jay.gateway.feign.AuthApi;
+import cn.jay.gateway.feign.dto.AuthVo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.ObjectProvider;
@@ -36,13 +38,19 @@ public class MyAuthenticationManager implements ReactiveAuthenticationManager {
         if (StringUtils.isBlank(token)) {
             return Mono.empty();
         }
+        Result<AuthVo> check = authApi.check(token);
+        if (!"10005".equals(check.getCode())) {
+            log.info("[" + check.getCode() + "]" + check.getMessage());
+            return Mono.empty();
+        }
         return Mono.just(authentication)
-                .map(auth -> authApi.check(token))
+                .map(res_auth -> check)
                 .log()
                 .onErrorResume(e -> {
                     log.error("验证token时发生错误，错误类型为： {}，错误信息为： {}", e.getClass(), e.getMessage());
                     return Mono.empty();
                 })
+                .map(auth -> auth.getData())
                 .map(claims -> new UsernamePasswordAuthenticationToken(
                         claims.getUser_name(),
                         null,
