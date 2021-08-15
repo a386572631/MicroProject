@@ -6,6 +6,9 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.client.ClientCredentialsTokenEndpointFilter;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
+/**
+ * 自定义client_id和client_secret的返回值
+ */
 @Slf4j
 public class MyClientCredentialsTokenEndpointFilter extends ClientCredentialsTokenEndpointFilter {
 
