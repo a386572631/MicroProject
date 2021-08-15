@@ -45,6 +45,9 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     DataSource dataSource;
+
+    @Autowired
+    MyAuthenticationEntryPoint myAuthenticationEntryPoint;
     /**
      * 配置客户端详情服务，从数据库获取用户详细信息（用户名和密码）进行校验
      */
@@ -114,13 +117,17 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
      */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        MyClientCredentialsTokenEndpointFilter filter = new MyClientCredentialsTokenEndpointFilter(security);
+        filter.afterPropertiesSet();
+        filter.setAuthenticationEntryPoint(myAuthenticationEntryPoint);
+        security.addTokenEndpointAuthenticationFilter(filter);
         security
                 // /oauth/token_key地址公开，不需登录即可取密钥
 //                .tokenKeyAccess("permitAll()")
                 // /oauth/check_token地址公开
-                .checkTokenAccess("permitAll()")
+                .checkTokenAccess("permitAll()");
                 // 允许表单验证
-                .allowFormAuthenticationForClients();
+//                .allowFormAuthenticationForClients();
     }
 
     /**

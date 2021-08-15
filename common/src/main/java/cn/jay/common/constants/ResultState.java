@@ -19,6 +19,7 @@ public enum ResultState {
     TOKENINVALID("10004", "TOKEN无效"),
     TOKENSUCCESS("10005", "TOKEN校验成功"),
     TOKENFAIL("10006", "TOKEN异常"),
+    CLIENTERROR("10007", "client_id或client_secret错误"),
     LOGINFAILUNKNOW("10009", "登录失败");
 
     private String code;
