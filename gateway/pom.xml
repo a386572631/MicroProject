@@ -5,11 +5,11 @@
     <parent>
         <groupId>cn.jay</groupId>
         <artifactId>MicroProject</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.1-RELEASE</version>
     </parent>
     <groupId>cn.jay</groupId>
     <artifactId>gateway</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1-RELEASE</version>
     <name>gateway</name>
     <description>网关</description>
     <properties>
@@ -19,7 +19,7 @@
         <dependency>
             <groupId>cn.jay</groupId>
             <artifactId>common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0.1-RELEASE</version>
         </dependency>
 
         <dependency>
