@@ -16,6 +16,8 @@ Spring Cloud Gateway 网关
 
 所有服务的统一入口
 
+鉴权解析
+
 ## user
 用户服务、用户登录
 
