@@ -6,6 +6,7 @@
         <groupId>cn.jay</groupId>
         <artifactId>MicroProject</artifactId>
         <version>1.0.1-RELEASE</version>
+        <relativePath></relativePath>
     </parent>
     <groupId>cn.jay</groupId>
     <artifactId>user</artifactId>
