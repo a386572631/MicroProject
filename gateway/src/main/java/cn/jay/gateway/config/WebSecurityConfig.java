@@ -12,7 +12,21 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableWebFluxSecurity
 @Order(2)
 public class WebSecurityConfig {
-    private String permitUrls = "/user-service/user/login";
+
+    private static final String[] permitUrls = {
+            "/user-service/user/login",
+            "/*/swagger-ui.html",
+            "/swagger-ui.html",
+            "/swagger-resources/configuration/security",
+            "/swagger-resources",
+            "/swagger-resources/configuration/ui",
+            "/auth/v2/api-docs",
+            "/sys/v2/api-docs",
+            "/v2/api-docs",
+            "/webjars/**",
+            "/doc.html"
+    };
+
     @Autowired
     TokenServerSecurityContextRepo tokenServerSecurityContextRepo;
 
@@ -24,10 +38,11 @@ public class WebSecurityConfig {
         http.csrf().disable()
                 .securityContextRepository(tokenServerSecurityContextRepo)
                 .authorizeExchange()
+                .anyExchange().permitAll().and()
 //                .pathMatchers("/user-service/**").permitAll()
                  // 白名单
-                .pathMatchers(this.permitUrls.split(",")).permitAll()
-                .anyExchange().authenticated().and()
+//                .pathMatchers(this.permitUrls).permitAll()
+//                .anyExchange().authenticated().and()
 //                .httpBasic().authenticationEntryPoint(myHttpBasicServerAuthenticationEntryPoint).and()
                 .formLogin()
                 // 鉴权成功

@@ -6,7 +6,7 @@ spring:
   cloud:
     nacos:
       server-addr: localhost:8848
-      discovery:
-        namespace: "25b744db-d355-4df8-938a-6ca9ad82f806"
-      config:
-        namespace: "25b744db-d355-4df8-938a-6ca9ad82f806"
+#      discovery:
+#        namespace: "25b744db-d355-4df8-938a-6ca9ad82f806"
+#      config:
+#        namespace: "25b744db-d355-4df8-938a-6ca9ad82f806"
