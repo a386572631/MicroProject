@@ -22,5 +22,6 @@ dubbo:
     qos-accept-foreign-ip: false
   registry:
     address: nacos://127.0.0.1:8848
+    timeout: 2000
   consumer:
     timeout: 4000

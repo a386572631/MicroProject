@@ -15,3 +15,14 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/micro?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: root
+
+dubbo:
+  application:
+    name: dubbo-provider
+    qos-enable: false
+    qos-accept-foreign-ip: false
+  registry:
+    address: nacos://127.0.0.1:8848
+  protocol:
+    name: dubbo
+    port: 20880
