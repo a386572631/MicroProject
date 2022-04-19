@@ -17,12 +17,17 @@ spring:
     password: root
 dubbo:
   application:
-    name: user-service-provider
+    name: user-service
     qos-enable: false
     qos-accept-foreign-ip: false
   registry:
     address: nacos://127.0.0.1:8848
     timeout: 2000
+    use-as-config-center: false
+    use-as-metadata-center: false
+    username: nacos
+    password: nacos
+    check: false
   protocol:
     name: dubbo
-    port: 20881
+    port: -1

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringCloudApplication
 @EnableFeignClients
 @MapperScan(basePackages = {"cn.jay.*.domain.repository.mapper"})
-@EnableDubbo
+@EnableDubbo(scanBasePackages = {"cn.jay.user.domain.service"})
 public class UserApplication {
 
     public static void main(String[] args) {

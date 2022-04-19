@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "order")
 @Api("Order")
 public class OrderController {
-    @DubboReference
+    @DubboReference(version = "1.0")
     ProviderService providerService;
 
     @GetMapping(value = "/hello")

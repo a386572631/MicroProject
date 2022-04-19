@@ -17,11 +17,13 @@ spring:
     password: root
 dubbo:
   application:
-    name: dubbo-consumer
+    name: order-service-consumer
     qos-enable: false
     qos-accept-foreign-ip: false
   registry:
     address: nacos://127.0.0.1:8848
     timeout: 2000
+    use-as-config-center: false
+    use-as-metadata-center: false
   consumer:
     timeout: 4000
