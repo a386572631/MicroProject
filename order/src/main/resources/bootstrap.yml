@@ -27,3 +27,9 @@ dubbo:
     use-as-metadata-center: false
   consumer:
     timeout: 4000
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 10000
