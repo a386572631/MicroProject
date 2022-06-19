@@ -6,6 +6,7 @@
         <groupId>cn.jay</groupId>
         <artifactId>MicroProject</artifactId>
         <version>1.0.1-RELEASE</version>
+        <relativePath></relativePath>
     </parent>
     <groupId>cn.jay</groupId>
     <artifactId>user</artifactId>
@@ -38,6 +39,23 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.16</version>
         </dependency>
+
+        <dependency>
+            <groupId>cn.jay</groupId>
+            <artifactId>dubbo-interfaces</artifactId>
+            <version>1.0.1-RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>3.0.4</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.dubbo</groupId>-->
+<!--            <artifactId>dubbo</artifactId>-->
+<!--            <version>3.0.3</version>-->
+<!--        </dependency>-->
     </dependencies>
 
 </project>
