@@ -17,14 +17,14 @@ public class OrderService {
     UserApi userApi;
 
     public void dubbo100() {
-        for (int i = 0; i < 100; i++) {
+//        for (int i = 0; i < 100; i++) {
             providerService.test();
-        }
+//        }
     }
 
     public void feign100() {
-        for (int i = 0; i < 100; i++) {
+//        for (int i = 0; i < 100; i++) {
             userApi.hello2();
-        }
+//        }
     }
 }
